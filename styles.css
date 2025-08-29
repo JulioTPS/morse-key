@@ -22,12 +22,12 @@ body {
 
 #base {
   position: absolute;
-  border-radius: 4%;
+  border-radius: 3%;
   bottom: 0;
   width: 100%;
   right: 0;
   height: 20%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
     hsl(22, 45%, 19%),
     hsl(22, 45%, 21%),
@@ -74,7 +74,7 @@ body {
   right: 0;
   height: 100%;
   z-index: 1;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom right,
     hsl(22, 45%, 20%, 50%),
     hsl(22, 45%, 19%, 50%),
@@ -111,7 +111,7 @@ body {
   left: 50%;
   width: 24%;
   height: 22%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 44%),
     hsl(49, 58%, 40%),
@@ -127,7 +127,7 @@ body {
   right: 1%;
   width: 30%;
   height: 180%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(139, 123, 54),
     rgb(182, 157, 48),
@@ -142,7 +142,7 @@ body {
   right: 20%;
   width: 60%;
   height: 35%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(139, 123, 54),
     rgb(182, 157, 48),
@@ -157,7 +157,7 @@ body {
   right: 20%;
   width: 60%;
   height: 180%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(139, 123, 54),
     rgb(182, 157, 48),
@@ -173,7 +173,7 @@ body {
   right: 1%;
   width: 23%;
   height: 30%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 44%),
     hsl(49, 58%, 42%),
@@ -184,14 +184,14 @@ body {
     hsl(49, 58%, 44%)
   );
 }
-#lever-screw-base {
+#lever-joint-base {
   border-top-left-radius: 42%;
   border-top-right-radius: 42%;
   bottom: 100%;
   left: 0;
   width: 45%;
-  height: 320%;
-  background-image: linear-gradient(
+  height: 340%;
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 42%),
@@ -212,13 +212,13 @@ body {
     hsl(49, 58%, 38%)
   );
 }
-#lever-screw {
+#lever-joint {
   border-radius: 100%;
   top: 10%;
   left: 30%;
   width: 40%;
-  height: 50%;
-  background-image: linear-gradient(
+  height: 40%;
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 42%),
@@ -243,7 +243,7 @@ body {
   left: 55%;
   width: 30%;
   height: 110%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(139, 123, 54),
     rgb(182, 157, 48),
@@ -258,7 +258,7 @@ body {
   right: 20%;
   width: 60%;
   height: 60%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     rgb(139, 123, 54),
     rgb(182, 157, 48),
@@ -267,13 +267,14 @@ body {
   );
 }
 #lever-stopper-top {
+  box-shadow: none;
   border-top-left-radius: 30%;
   border-top-right-radius: 30%;
   bottom: 100%;
   right: 20%;
   width: 60%;
   height: 210%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     hsl(49, 44%, 38%),
     rgb(182, 157, 48),
@@ -281,7 +282,7 @@ body {
     rgb(110, 97, 43)
   );
 }
-#lever-bar-screw-hole {
+#lever-bar-joint-connection {
   position: absolute;
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -289,7 +290,7 @@ body {
   left: 0;
   width: 45%;
   height: 220%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 43%),
@@ -315,7 +316,7 @@ body {
   left: 0;
   width: 100%;
   height: 80%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 43%),
@@ -335,32 +336,111 @@ body {
     hsl(49, 58%, 43%)
   );
 }
-#lever-bar-stopper {
+#lever-bar-stopper-hole {
   border-top-right-radius: 3%;
   border-bottom-right-radius: 3%;
-  box-shadow: none;
-  position: absolute;
+  box-shadow: 0px -3px 0px rgba(0, 0, 0, 0.259);
   top: 0;
   left: 100%;
   width: 100%;
   height: 50%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to right,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 41%),
     hsl(49, 58%, 45%),
-    rgb(139, 123, 54),
-    rgb(110, 97, 43)
+    hsl(49, 58%, 38%),
+    hsl(49, 58%, 30%)
   );
 }
+
+.lever-bar-screw-bottom {
+  top: 50%;
+  left: 143%;
+  width: 25%;
+  height: 51.5%;
+  background: repeating-linear-gradient(
+    -4deg,
+    hsl(49, 58%, 43%) 0%,
+    hsl(49, 58%, 37%) 16%
+  );
+}
+#lever-bar-stopper-screw-mask {
+  box-shadow: none;
+  transform: rotate(60deg);
+  position: absolute;
+  top: 100%;
+  right: 40%;
+  width: 100%;
+  height: 20%;
+  background: black;
+}
+#lever-bar-stopper-screw-mask2 {
+  box-shadow: none;
+  transform: rotate(-60deg);
+  top: 100%;
+  left: 40%;
+  width: 100%;
+  height: 20%;
+  background: black;
+}
+#lever-bar-stopper-screw-top {
+  bottom: 199%;
+  left: 0;
+  width: 100%;
+  height: 101.5%;
+  background: linear-gradient(
+    to right,
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 41%),
+    hsl(49, 58%, 45%),
+    hsl(49, 58%, 38%),
+    hsl(49, 58%, 30%)
+  );
+}
+#lever-bar-stopper-screw-washer {
+  border-radius: 10% / 30%;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 21%;
+  background: linear-gradient(
+    to right,
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 41%),
+    hsl(49, 58%, 45%),
+    hsl(49, 58%, 38%),
+    hsl(49, 58%, 30%)
+  );
+}
+.lever-bar-stopper-screw-head {
+  border-radius: 10% 10% 30% 30% / 25% 25% 45% 45%;
+  bottom: 100%;
+  left: -135%;
+  width: 360%;
+  height: 50%;
+  background: repeating-linear-gradient(
+    to right,
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 37%) 4%
+  );
+}
+#lever-bar-stopper-screw-head-top {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.259);
+  border-radius: 30% 30% 10% 10% / 45% 45% 25% 25%;
+  left: 0;
+  bottom: 100%;
+  width: 100%;
+  height: 100%;
+}
+
 #lever-bar-contact {
   box-shadow: none;
-  position: absolute;
   top: 0;
   right: 100%;
   width: 100%;
-  height: 50%;
-  background-image: linear-gradient(
+  height: 85%;
+  background: linear-gradient(
     to right,
     hsl(49, 58%, 41.5%),
     hsl(49, 58%, 43%),
@@ -371,15 +451,33 @@ body {
     hsl(49, 58%, 43%)
   );
 }
+.lever-bar-screw-bottom#lever-bar-contact-screw {
+  left: -70%;
+  top: -100%;
+  height: 235%;
+  border-radius: 0 0 30% 30%;
+  background: repeating-linear-gradient(
+    -4deg,
+    hsl(49, 58%, 43%) 0%,
+    hsl(49, 58%, 37%) 5%
+  );
+}
+.lever-bar-stopper-screw-head#lever-bar-contact-screw-head {
+  height: 10%;
+}
+.lever-bar-stopper-screw-head#lever-bar-contact-screw-head-top {
+  height: 30%;
+}
+
 #lever-bar-neck {
-  border-bottom-left-radius: 90%;
+  border-bottom-left-radius: 100%;
   box-shadow: none;
   position: absolute;
   top: 0;
   right: 100%;
   width: 500%;
   height: 100%;
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom right,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 42%),
@@ -393,18 +491,119 @@ body {
   box-shadow: -3px 0px 3px rgba(0, 0, 0, 0.289);
   box-shadow: none;
   position: absolute;
-  top: -3%;
-  right: 85%;
-  width: 18%;
-  height: 100%;
-  background-image: linear-gradient(
+  top: 0;
+  right: 90%;
+  width: 19%;
+  height: 45%;
+  background: linear-gradient(
     to right,
     hsl(49, 58%, 43%),
     hsl(49, 58%, 41%),
     hsl(49, 58%, 45%),
     hsl(49, 58%, 38%),
     hsl(48, 58%, 30%),
+    hsl(48, 58%, 30%),
     hsl(48, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 43%),
+    hsl(48, 58%, 30%)
+  );
+}
+
+#spring {
+  box-shadow: none;
+  position: absolute;
+  left: 6%;
+  bottom: 100%;
+  width: 50%;
+  height: 192%;
+  background: linear-gradient(
+    to bottom,
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
     hsl(49, 58%, 43%)
   );
+  border-radius: 100% 10% 60% 0/ 100% 10% 100% 0;
+}
+#spring-mask {
+  box-shadow: none;
+  position: absolute;
+  bottom: 6%;
+  right: 0%;
+  width: 100%;
+  height: 120%;
+  background: hsl(0, 0%, 0%);
+  border-radius: 100% 10% 60% 0/ 100% 10% 100% 0;
+}
+#spring-mask2 {
+  box-shadow: none;
+  top: 0%;
+  right: 0%;
+  width: 20%;
+  height: 40%;
+  background: hsl(0, 0%, 0%);
+  border-radius: 0;
+}
+
+#spring-tip {
+  box-shadow: none;
+  position: absolute;
+  bottom: 20%;
+  left: 90%;
+  width: 20%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%),
+    hsl(49, 58%, 40%),
+    hsl(49, 58%, 43%)
+  );
+  border-radius: 130% 100% 100% 100% / 130% 100% 100% 0%;
+}
+#spring-tip-mask {
+  box-shadow: none;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 92%;
+  height: 100%;
+  background: black;
+  border-radius: 120% 100% 100% 100% / 130% 100% 100% 0%;
+}
+#spring-tip-mask2 {
+  box-shadow: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  background: black;
+  border-radius: 100% 0 0 0;
+}
+#spring-tip-mask3 {
+  transform: rotate(42deg);
+  box-shadow: none;
+  top: 54%;
+  left: -9%;
+  width: 35%;
+  height: 50%;
+  background: rgb(0, 0, 0);
 }
