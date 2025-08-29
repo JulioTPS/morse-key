@@ -33,7 +33,7 @@
                 <div id="lever-bar-stopper-screw-mask"></div>
                 <div id="lever-bar-stopper-screw-mask2"></div>
                 <div id="lever-bar-stopper-screw-top">
-                  <div id="lever-bar-stopper-screw-washer"></div>
+                  <div class="lever-bar-stopper-screw-washer"></div>
                   <div class="lever-bar-stopper-screw-head">
                     <div
                       class="lever-bar-stopper-screw-head"
@@ -45,8 +45,15 @@
               <div id="lever-bar-stopper-hole"></div>
 
               <div id="lever-bar-contact-screw" class="lever-bar-screw-bottom">
-                <div id="lever-bar-contact-screw-washer"></div>
-                <div id="lever-bar-contact-screw-washer2"></div>
+                <div
+                  class="lever-bar-stopper-screw-washer"
+                  id="lever-bar-contact-screw-washer"
+                >
+                  <div
+                    class="lever-bar-stopper-screw-washer"
+                    id="lever-bar-contact-screw-washer2"
+                  ></div>
+                </div>
                 <div
                   class="lever-bar-stopper-screw-head"
                   id="lever-bar-contact-screw-head"
@@ -75,6 +82,13 @@
         </div>
       </div>
     </div>
+    <input
+      onchange="changeVolume(volumeDial.value)"
+      type="range"
+      id="volume"
+      min="0"
+      max="100"
+    />
     <script src="script.js" defer></script>
   </body>
 </html>
