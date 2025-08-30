@@ -1,4 +1,5 @@
 # morse-key
 
-an online morse key
-Make sound with the keys "control" or "a".
+An online Morse telegraph key. 
+
+Press "control" or "a" to make sound.
