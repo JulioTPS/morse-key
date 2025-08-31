@@ -8,13 +8,18 @@ let gainNode;
 gainNode = audioCtx.createGain();
 let isPressing = false;
 let completeStop = false;
-let lever = document.getElementById("lever-bar-joint-connection");
-let spring = document.getElementById("spring");
-let volumeDial = document.getElementById("volume");
+const lever = document.getElementById("lever-bar-joint-connection");
+const spring = document.getElementById("spring");
+const volumeDial = document.getElementById("volume");
 let volume = 0.5;
+let timer = 0;
+const morseTextMaxSize = 30;
+const morseText = document.getElementById("morse-text");
+document.getElementById("morse-code-sheet").style.fontSize = `${document.getElementById("base").offsetWidth / 80}px`;
 
 function onKeyPress(event) {
   if ((event.key === "Control" || event.key === "a") && !isPressing) {
+    timer = Date.now();
     lever.classList.remove("raised");
     spring.classList.remove("raised");
     lever.classList.add("lowered");
@@ -38,6 +43,8 @@ function onKeyPress(event) {
 
 function onKeyRelease(event) {
   if (event.key === "Control" || event.key === "a") {
+    checkMorseCode(Date.now() - timer);
+
     lever.classList.remove("lowered");
     lever.classList.add("raised");
     spring.classList.remove("lowered");
@@ -59,4 +66,18 @@ function onKeyRelease(event) {
 function changeVolume(value) {
   volume = value / 100;
   gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
+}
+
+function checkMorseCode(duration) {
+  if (duration < 130) {
+    if (morseText.textContent.length >= morseTextMaxSize-1) {
+      morseText.textContent = morseText.textContent.slice(-(morseTextMaxSize-1));
+    }
+    morseText.textContent += ".";
+  } else {
+    if (morseText.textContent.length >= morseTextMaxSize-1) {
+      morseText.textContent = morseText.textContent.slice(-(morseTextMaxSize-1));
+    }
+    morseText.textContent += "-";
+  }
 }
