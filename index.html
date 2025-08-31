@@ -84,42 +84,42 @@
         <div id="morse-code-sheet">
           <div class="morse-code-sheet-content" style="width: 60%">
             <span>A .-</span>
-            <span>N -.</span>
             <span>B -...</span>
-            <span>O ---</span>
             <span>C -.-.</span>
-            <span>P .--.</span>
             <span>D -..</span>
-            <span>Q --.-</span>
             <span>E .</span>
-            <span>R .-.</span>
             <span>F ..-.</span>
-            <span>S ...</span>
-            <span>G --.</span>
-            <span>T -</span>
             <span>H ....</span>
-            <span>U ..-</span>
+            <span>G --.</span>
             <span>I ..</span>
-            <span>V ...-</span>
             <span>J .---</span>
-            <span>W .--</span>
             <span>K -.-</span>
-            <span>X -..-</span>
             <span>L .-..</span>
-            <span>Y -.--</span>
             <span>M --</span>
+            <span>N -.</span>
+            <span>O ---</span>
+            <span>P .--.</span>
+            <span>Q --.-</span>
+            <span>R .-.</span>
+            <span>S ...</span>
+            <span>T -</span>
+            <span>U ..-</span>
+            <span>V ...-</span>
+            <span>W .--</span>
+            <span>X -..-</span>
+            <span>Y -.--</span>
             <span>Z --..</span>
           </div>
           <div class="morse-code-sheet-content" style="width: 30%">
             <span>1 .----</span>
-            <span>6 -....</span>
             <span>2 ..---</span>
-            <span>7 --...</span>
             <span>3 ...--</span>
-            <span>8 ---..</span>
             <span>4 ....-</span>
-            <span>9 ----.</span>
             <span>5 .....</span>
+            <span>6 -....</span>
+            <span>7 --...</span>
+            <span>8 ---..</span>
+            <span>9 ----.</span>
             <span>0 -----</span>
           </div>
         </div>
@@ -128,15 +128,29 @@
     <div>
       Volume:
       <input
-        onchange="changeVolume(volumeDial.value)"
+        onchange="ChangeVolume(volumeDial.value)"
         type="range"
         id="volume"
         min="0"
+        value="50"
         max="100"
       />
+      <span id="volume-value">50</span><span>%</span>
+    </div>
+    <div>
+      Time of a dot (ms):
+      <input
+        onchange="ChangeDotDuration(dotDurationDial.value)"
+        type="range"
+        id="dot-duration"
+        value="150"
+        min="0"
+        max="200"
+      />
+      <span id="dot-duration-value">150</span><span>ms</span>
     </div>
     <div>Press CTRL or A to beep.</div>
 
-    <script src="script.js" defer></script>
+    <script src="script.js" defer onload="SlideText()"></script>
   </body>
 </html>

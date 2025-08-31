@@ -18,6 +18,7 @@ body {
   font-size: 2em;
   overflow: clip;
   text-align: right;
+  white-space: pre-wrap;
 }
 
 #key {
@@ -679,7 +680,7 @@ body {
 .lowered#lever-bar-joint-connection {
   animation-timing-function: linear;
   animation-name: lowered-lever;
-  animation-duration: 0.04s;
+  animation-duration: 0.02s;
   animation-fill-mode: forwards;
 }
 
@@ -694,7 +695,7 @@ body {
 .raised#lever-bar-joint-connection {
   animation-timing-function: linear;
   animation-name: raised-lever;
-  animation-duration: 0.02s;
+  animation-duration: 0.01s;
   animation-fill-mode: forwards;
 }
 
@@ -711,7 +712,7 @@ body {
 .lowered#spring {
   animation-timing-function: linear;
   animation-name: lowered-spring;
-  animation-duration: 0.04s;
+  animation-duration: 0.02s;
   animation-fill-mode: forwards;
 }
 
@@ -728,6 +729,6 @@ body {
 .raised#spring {
   animation-timing-function: linear;
   animation-name: raised-spring;
-  animation-duration: 0.02s;
+  animation-duration: 0.01s;
   animation-fill-mode: forwards;
 }
