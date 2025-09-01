@@ -8,7 +8,7 @@ let gainNode;
 gainNode = audioCtx.createGain();
 let isPressing = false;
 let completeStop;
-let slideText;
+let spaceTextTimeout;
 const lever = document.getElementById("lever-bar-joint-connection");
 const spring = document.getElementById("spring");
 const volumeDial = document.getElementById("volume");
@@ -18,11 +18,79 @@ const dotDurationDial = document.getElementById("dot-duration");
 const dotDurationValue = document.getElementById("dot-duration-value");
 let dotDuration = 150;
 let timer = 0;
+const predictedLetter = document.getElementById("predicted-letter");
+const decodedLetters = document.getElementById("decoded-letters");
+let predictLetterTimeout;
+let composedLetter = "";
 const morseTextMaxSize = 30;
-const morseText = document.getElementById("morse-text");
+const definedMorse = document.getElementById("defined-morse");
+let composedMorse = "";
+const undefinedMorse = document.getElementById("undefined-morse");
 document.getElementById("morse-code-sheet").style.fontSize = `${
   document.getElementById("base").offsetWidth / 80
 }px`;
+
+const morseMap = {
+  // Letters
+  ".-": "A",
+  "-...": "B",
+  "-.-.": "C",
+  "-..": "D",
+  ".": "E",
+  "..-.": "F",
+  "--.": "G",
+  "....": "H",
+  "..": "I",
+  ".---": "J",
+  "-.-": "K",
+  ".-..": "L",
+  "--": "M",
+  "-.": "N",
+  "---": "O",
+  ".--.": "P",
+  "--.-": "Q",
+  ".-.": "R",
+  "...": "S",
+  "-": "T",
+  "..-": "U",
+  "...-": "V",
+  ".--": "W",
+  "-..-": "X",
+  "-.--": "Y",
+  "--..": "Z",
+
+  // Numbers
+  "-----": "0",
+  ".----": "1",
+  "..---": "2",
+  "...--": "3",
+  "....-": "4",
+  ".....": "5",
+  "-....": "6",
+  "--...": "7",
+  "---..": "8",
+  "----.": "9",
+
+  // Common punctuation
+  ".-.-.-": ".",
+  "--..--": ",",
+  "..--..": "?",
+  ".----.": "'",
+  "-.-.--": "!",
+  "-..-.": "/",
+  "-.--.": "(",
+  "-.--.-": ")",
+  ".-...": "&",
+  "---...": ":",
+  "-.-.-.": ";",
+  "-...-": "=",
+  ".-.-.": "+",
+  "-....-": "-",
+  "..--.-": "_",
+  ".-..-.": '"',
+  "...-..-": "$",
+  ".--.-.": "@",
+};
 
 function OnKeyPress(event) {
   if ((event.key === "Control" || event.key === "a") && !isPressing) {
@@ -46,6 +114,8 @@ function OnKeyPress(event) {
     }
     clearTimeout(completeStop);
   }
+  clearTimeout(spaceTextTimeout);
+  clearTimeout(predictLetterTimeout);
 }
 
 function OnKeyRelease(event) {
@@ -88,34 +158,42 @@ function ChangeDotDuration(value) {
 }
 
 function CheckMorseCode(duration) {
-  if (duration < dotDuration) {
-    if (morseText.textContent.length >= morseTextMaxSize - 1) {
-      morseText.textContent = morseText.textContent.slice(
-        -(morseTextMaxSize - 1)
-      );
-    }
-    morseText.textContent += ".";
-  } else {
-    if (morseText.textContent.length >= morseTextMaxSize - 1) {
-      morseText.textContent = morseText.textContent.slice(
-        -(morseTextMaxSize - 1)
-      );
-    }
-    morseText.textContent += "-";
-  }
-  clearTimeout(slideText);
-  SlideText();
+  let signal;
+  duration < dotDuration ? (signal = ".") : (signal = "-");
+
+  composedMorse += signal;
+  undefinedMorse.textContent = composedMorse;
+
+  PredictLetter(signal);
 }
 
-function SlideText() {
-  slideText = setTimeout(() => {
-    if (morseText.textContent.length >= morseTextMaxSize - 1) {
-      morseText.textContent = morseText.textContent.slice(
-        -(morseTextMaxSize - 1)
-      );
-    }
-    morseText.textContent += " ";
+function DefineMorse(text) {
+  // if (definedMorse.textContent.length >= text.length - 1) {
+  //   definedMorse.textContent = definedMorse.textContent.slice(
+  //     -(text.length - 1),
+  //     definedMorse.textContent.length
+  //   );
+  // }
+  definedMorse.textContent += text;
+}
 
-    SlideText();
-  }, dotDuration * 7);
+function PredictLetter(signal) {
+  composedLetter += signal;
+  predictedLetter.textContent = morseMap[composedLetter] || "";
+  predictLetterTimeout = setTimeout(() => {
+    decodedLetters.textContent += predictedLetter.textContent;
+    composedLetter = "";
+    composedMorse = "";
+    DefineMorse(undefinedMorse.textContent);
+    predictedLetter.textContent = "";
+    undefinedMorse.textContent = "";
+    SpaceText();
+  }, dotDuration * 3);
+}
+
+function SpaceText() {
+  spaceTextTimeout = setTimeout(() => {
+    DefineMorse(" ");
+    decodedLetters.textContent += " ";
+  }, dotDuration * 4);
 }

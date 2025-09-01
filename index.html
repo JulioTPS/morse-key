@@ -8,7 +8,14 @@
     <link rel="icon" type="image/x-icon" href="./telegraph.png" />
   </head>
   <body>
-    <div id="morse-text"></div>
+    <div id="morse-text">
+      <span id="defined-morse"></span>
+      <span id="undefined-morse"></span>
+    </div>
+    <div id="decoded-text">
+      <span id="decoded-letters"></span>
+      <span id="predicted-letter"></span>
+    </div>
     <div id="key">
       <div id="base">
         <div id="base-texture"></div>
@@ -152,6 +159,10 @@
     </div>
     <div>Press CTRL or A to beep.</div>
 
-    <script src="script.js" defer onload="SlideText()"></script>
+    <script
+      src="script.js"
+      defer
+      onload="SlideText(); PredictLetter()"
+    ></script>
   </body>
 </html>
