@@ -19,19 +19,28 @@ body {
   font-size: 2em;
   overflow: clip;
   text-align: right;
-  white-space: pre-wrap;
+  white-space: pre;
   justify-content: flex-end;
   display: flex;
-}
-
-#defined-morse {
-  white-space: pre-wrap;
-}
-#undefined-morse {
-  color: hsl(0, 0%, 53%);
+  flex-direction: row;
+  align-items: center;
 }
 
 #predicted-letter {
+  color: hsl(0, 0%, 53%);
+}
+
+#defined-letters {
+  direction: rtl;
+  text-align: left;
+  overflow: clip;
+  white-space: nowrap;
+  flex-shrink: 1;
+  max-width: 100%;
+  display: inline-block;
+}
+
+#undefined-morse {
   color: hsl(0, 0%, 53%);
 }
 

@@ -157,12 +157,13 @@
       />
       <span id="dot-duration-value">150</span><span>ms</span>
     </div>
+    <div>
+      Use literal spacing mode:
+      <input onchange="ChangeLiteralMode()" type="checkbox" id="literal-mode" />
+      <span id="literal-mode-value">Off</span>
+    </div>
     <div>Press CTRL or A to beep.</div>
 
-    <script
-      src="script.js"
-      defer
-      onload="SlideText(); PredictLetter()"
-    ></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

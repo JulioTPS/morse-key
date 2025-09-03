@@ -26,6 +26,9 @@ const morseTextMaxSize = 30;
 const definedMorse = document.getElementById("defined-morse");
 let composedMorse = "";
 const undefinedMorse = document.getElementById("undefined-morse");
+const literalModeValueElement = document.getElementById("literal-mode-value");
+const literalModeElement = document.getElementById("literal-mode");
+let literalMode = false;
 document.getElementById("morse-code-sheet").style.fontSize = `${
   document.getElementById("base").offsetWidth / 80
 }px`;
@@ -115,7 +118,9 @@ function OnKeyPress(event) {
     clearTimeout(completeStop);
   }
   clearTimeout(spaceTextTimeout);
-  clearTimeout(predictLetterTimeout);
+  if (predictLetterTimeout) {
+    clearTimeout(predictLetterTimeout);
+  }
 }
 
 function OnKeyRelease(event) {
@@ -159,12 +164,29 @@ function ChangeDotDuration(value) {
 
 function CheckMorseCode(duration) {
   let signal;
-  duration < dotDuration ? (signal = ".") : (signal = "-");
+  if (duration < dotDuration) {
+    if (literalMode) {
+      signal = "-.";
+    } else {
+      signal = ".";
+    }
+    PredictLetter(".");
+  } else {
+    if (literalMode) {
+      signal = "---.";
+    } else {
+      signal = "-";
+    }
+    PredictLetter("-");
+  }
 
   composedMorse += signal;
   undefinedMorse.textContent = composedMorse;
+}
 
-  PredictLetter(signal);
+function ChangeLiteralMode() {
+  literalMode = literalModeElement.checked;
+  literalModeValueElement.textContent = literalMode ? "On" : "Off";
 }
 
 function DefineMorse(text) {
@@ -174,7 +196,9 @@ function DefineMorse(text) {
   //     definedMorse.textContent.length
   //   );
   // }
+  console.log("'" + text + "' = ", definedMorse.textContent);
   definedMorse.textContent += text;
+  console.log("RESULT: ", definedMorse.textContent);
 }
 
 function PredictLetter(signal) {
@@ -192,8 +216,17 @@ function PredictLetter(signal) {
 }
 
 function SpaceText() {
-  spaceTextTimeout = setTimeout(() => {
+  if (literalMode) {
+    DefineMorse("..");
+  } else {
     DefineMorse(" ");
+  }
+  spaceTextTimeout = setTimeout(() => {
+    if (literalMode) {
+      DefineMorse("....");
+    } else {
+      DefineMorse("/ ");
+    }
     decodedLetters.textContent += " ";
   }, dotDuration * 4);
 }
